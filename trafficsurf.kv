@@ -1,0 +1,65 @@
+#:kivy 2.1.0
+
+<WindowManager>:
+    LoginScreen:
+        name: 'login_screen'
+    SurfScreen:
+        name: 'surf_screen'
+
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(40)
+        spacing: dp(15)
+
+        Label:
+            text: 'TrafficSurf'
+            font_size: '40sp'
+            bold: True
+            size_hint_y: None
+            height: dp(60)
+            color: (0.2, 0.5, 0.9, 1)
+
+        Label:
+            id: status_label
+            text: app.login_status_text
+            font_size: '14sp'
+            size_hint_y: None
+            height: dp(30)
+
+        TextInput:
+            id: username
+            hint_text: 'Tên đăng nhập hoặc Email'
+            multiline: False
+            write_tab: False
+            size_hint_y: None
+            height: dp(48)
+
+        TextInput:
+            id: password
+            hint_text: 'Mật khẩu'
+            multiline: False
+            password: True
+            write_tab: False
+            size_hint_y: None
+            height: dp(48)
+
+        Button:
+            text: 'Đăng nhập'
+            size_hint_y: None
+            height: dp(48)
+            on_press: app.do_login()
+
+<SurfScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        KivyBrowser:
+            id: browser
+
+        Button:
+            text: 'Đăng xuất'
+            size_hint_y: None
+            height: dp(48)
+            background_color: (0.9, 0.2, 0.2, 1) # Màu đỏ
+            on_press: app.do_logout()
